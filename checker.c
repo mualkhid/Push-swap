@@ -6,7 +6,7 @@
 /*   By: mualkhid <mualkhid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 11:07:49 by mualkhid          #+#    #+#             */
-/*   Updated: 2024/03/08 12:04:45 by mualkhid         ###   ########.fr       */
+/*   Updated: 2024/03/08 16:57:17 by mualkhid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,13 @@ int	main(int ac, char **av)
 	int		len;
 	int		i;
 	int		j;
+	int k;
 
 	split_av = NULL;
 	a = NULL;
 	b = NULL;
 	next_line = NULL;
+	k = 0;
 	if (ac == 1 || (ac == 2 && !av[1][0]))
 		return (0);
 	else
@@ -37,7 +39,7 @@ int	main(int ac, char **av)
 			j = 0;
 			while (split_av[j] != NULL)
 			{
-				init_stack_a(&a, &split_av[j]);
+				init_stack_checker(&a, split_av[j]);
 				free(split_av[j]);
 				j++;
 			}
@@ -46,12 +48,14 @@ int	main(int ac, char **av)
 		}
 	}
 	len = stack_len(a);
-	next_line = (get_next_line(0, next_line));
-	while (next_line)
+	while (next_line != NULL || k == 0)
 	{
-		apply_command(&a, &b, next_line);
 		next_line = (get_next_line(0, next_line));
+		apply_command(&a, &b, next_line);
+		free(next_line);
+		k++;
 	}
+	free(next_line);
 	if (stack_sorted(a) && stack_len(a) == len)
 		write(1, "OK\n", 3);
 	else

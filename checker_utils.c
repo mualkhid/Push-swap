@@ -6,7 +6,7 @@
 /*   By: mualkhid <mualkhid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 11:07:45 by mualkhid          #+#    #+#             */
-/*   Updated: 2024/03/08 11:42:03 by mualkhid         ###   ########.fr       */
+/*   Updated: 2024/03/08 12:51:56 by mualkhid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,4 +57,31 @@ void	apply_command(t_stack **a, t_stack **b, char *command)
 		rrr(a, b, true);
 	else
 		checker_error(a, b);
+}
+
+int init_stack_checker(t_stack **a, char *arg)
+{
+    long n;
+
+    if (error_syntax(arg))
+	{
+		free(arg);
+        free_errors(a, NULL);
+        return (ERROR);
+    }
+    n = ft_atol(arg);
+    if (n > INT_MAX || n < INT_MIN)
+	{
+		free(arg);
+		free_errors(a, NULL);
+        return (ERROR);
+    }
+    if (error_duplicate(*a, (int)n))
+	{
+		free(arg);
+        free_errors(a, NULL);
+        return (ERROR);
+    }
+    append_node(a, (int)n);
+    return (0);
 }

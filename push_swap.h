@@ -6,7 +6,7 @@
 /*   By: mualkhid <mualkhid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 11:08:52 by mualkhid          #+#    #+#             */
-/*   Updated: 2024/03/08 11:57:11 by mualkhid         ###   ########.fr       */
+/*   Updated: 2024/03/08 12:53:38 by mualkhid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,9 +133,9 @@ void			apply_command(t_stack **a, t_stack **b, char *command);
 // void			handle_swap_commands(char *line, t_stack **a, t_stack **b);
 // void			handle_push_commands(char *line, t_stack **a, t_stack **b);
 // void			handle_rotate_commands(char *line, t_stack **a, t_stack **b);
-
-
-
+int init_stack_checker(t_stack **a, char *arg);
+long	ft_atol(const char *s);
+void	append_node(t_stack **stack, int n);
 
 
 #endif

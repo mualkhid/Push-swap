@@ -6,7 +6,7 @@
 /*   By: mualkhid <mualkhid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 11:09:42 by mualkhid          #+#    #+#             */
-/*   Updated: 2024/03/08 11:59:53 by mualkhid         ###   ########.fr       */
+/*   Updated: 2024/03/08 12:53:28 by mualkhid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void free_split_array(char **split_array)
     free(split_array);
 }
 
-static long	ft_atol(const char *s)
+long	ft_atol(const char *s)
 {
 	long	result;
 	int		sign;
@@ -44,7 +44,7 @@ static long	ft_atol(const char *s)
 	return (result * sign);
 }
 
-static void	append_node(t_stack **stack, int n)
+void	append_node(t_stack **stack, int n)
 {
 	t_stack	*node;
 	t_stack	*last_node;
