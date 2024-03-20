@@ -106,7 +106,9 @@ char	*get_next_line(int fd, char	*line)
 		return (NULL);
 	}
 	line = extract_line_from_str(buffer);
+	free(line);
 	buffer = skip_to_next_line(buffer);
+	free(buffer);
 	return (line);
 }
 
