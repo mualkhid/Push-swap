@@ -57,4 +57,3 @@ void	apply_command(t_stack **a, t_stack **b, char *command)
 	else
 		checker_error(a, b);
 }
-

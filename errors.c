@@ -43,24 +43,25 @@ int	error_duplicate(t_stack *a, int n)
 	return (0);
 }
 
-void free_stack(t_stack **stack)
+void	free_stack(t_stack **stack)
 {
-    t_stack *tmp;
-    if (stack && *stack)
-    {
-        while (*stack)
-        {
-            tmp = (*stack)->next;
-            free(*stack);
-            *stack = tmp;
-        }
-    }
+	t_stack	*tmp;
+
+	if (stack && *stack)
+	{
+		while (*stack)
+		{
+			tmp = (*stack)->next;
+			free(*stack);
+			*stack = tmp;
+		}
+	}
 }
 
 void	free_errors(t_stack **a, t_stack **b)
 {
 	ft_putendl_fd("Error", 2);
-	if(a && *a)
+	if (a && *a)
 		free_stack(a);
 	if (b && *b)
 		free_stack(b);

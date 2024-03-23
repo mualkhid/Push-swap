@@ -82,8 +82,8 @@ static void	cost_analysis_a(t_stack *a, t_stack *b)
 
 void	set_cheapest(t_stack *stack)
 {
-	long			cheapest_value;
-	t_stack			*cheapest_node;
+	long	cheapest_value;
+	t_stack	*cheapest_node;
 
 	if (!stack)
 		return ;

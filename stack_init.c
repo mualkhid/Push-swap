@@ -6,21 +6,23 @@
 /*   By: mualkhid <mualkhid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 11:09:42 by mualkhid          #+#    #+#             */
-/*   Updated: 2024/03/08 12:53:28 by mualkhid         ###   ########.fr       */
+/*   Updated: 2024/03/23 13:44:56 by mualkhid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void free_split_array(char **split_array)
+void	free_split_array(char **split_array)
 {
-    int i = 0;
-    while (split_array[i] != NULL)
-    {
-        free(split_array[i]);
-        i++;
-    }
-    free(split_array);
+	int	i;
+
+	i = 0;
+	while (split_array[i] != NULL)
+	{
+		free(split_array[i]);
+		i++;
+	}
+	free(split_array);
 }
 
 static long	ft_atol(const char *s)
@@ -30,8 +32,8 @@ static long	ft_atol(const char *s)
 
 	result = 0;
 	sign = 1;
-	while (*s == ' ' || *s == '\t' || *s == '\n' || *s == '\r'
-		|| *s == '\f' || *s == '\v')
+	while (*s == ' ' || *s == '\t' || *s == '\n' || *s == '\r' || *s == '\f'
+		|| *s == '\v')
 		s++;
 	if (*s == '-' || *s == '+')
 	{
@@ -55,7 +57,7 @@ static void	append_node(t_stack **stack, int n)
 	if (!node)
 		return ;
 	node->next = NULL;
-	node->cheapest = 0; 
+	node->cheapest = 0;
 	node->nbr = n;
 	if (!(*stack))
 	{
@@ -70,32 +72,34 @@ static void	append_node(t_stack **stack, int n)
 	}
 }
 
-int init_stack_a(t_stack **a, char **split_av)
+int	init_stack_a(t_stack **a, char **split_av)
 {
-	int i = 0;
+	int		i;
+	long	n;
+	char	*arg;
+
+	i = 0;
 	while (split_av[i] != NULL)
 	{
-		long n;
-		char *arg = split_av[i];
-
+		arg = split_av[i];
 		if (error_syntax(arg))
 		{
 			free_split_array(split_av);
 			free_errors(a, NULL);
-			return -1;
+			return (-1);
 		}
 		n = ft_atol(arg);
 		if (n > INT_MAX || n < INT_MIN)
 		{
 			free_split_array(split_av);
 			free_errors(a, NULL);
-			return -1;
+			return (-1);
 		}
 		if (error_duplicate(*a, (int)n))
 		{
 			free_split_array(split_av);
 			free_errors(a, NULL);
-			return -1;
+			return (-1);
 		}
 		append_node(a, (int)n);
 		i++;
@@ -103,21 +107,7 @@ int init_stack_a(t_stack **a, char **split_av)
 	return (0);
 }
 
-t_stack	*get_cheapest(t_stack *stack)
-{
-	if (!stack)
-		return (NULL);
-	while (stack)
-	{
-		if (stack->cheapest)
-			return (stack);
-		stack = stack->next;
-	}
-	return (NULL);
-}
-
-void	prep_for_push(t_stack **stack, t_stack *top_node,
-	char stack_name)
+void	prep_for_push(t_stack **stack, t_stack *top_node, char stack_name)
 {
 	while (*stack != top_node)
 	{

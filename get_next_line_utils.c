@@ -50,7 +50,7 @@ char	*join_strings(char *frst, char *secnd)
 {
 	int		i;
 	int		j;
-	char	*newstr ;
+	char	*newstr;
 
 	if (!frst)
 		frst = initialize_string();
@@ -72,4 +72,3 @@ char	*join_strings(char *frst, char *secnd)
 	free(frst);
 	return (newstr);
 }
-
