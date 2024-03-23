@@ -6,7 +6,7 @@
 /*   By: mualkhid <mualkhid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 11:08:52 by mualkhid          #+#    #+#             */
-/*   Updated: 2024/03/23 14:16:44 by mualkhid         ###   ########.fr       */
+/*   Updated: 2024/03/23 15:24:00 by mualkhid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,7 @@ void				put_digit(long long int num, int base, int *len);
 int					ft_printf(const char *format, ...);
 
 //***Checker
-void				checker_error(t_stack **a, t_stack **b);
+void				checker_error(t_stack **a, t_stack **b, char *command);
 int					ft_strcmp(char *str_1, char *str_2);
 void				apply_command(t_stack **a, t_stack **b, char *command);
 void				handle_swap_commands(char *line, t_stack **a, t_stack **b);
