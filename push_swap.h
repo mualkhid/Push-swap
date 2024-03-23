@@ -6,7 +6,7 @@
 /*   By: mualkhid <mualkhid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 11:08:52 by mualkhid          #+#    #+#             */
-/*   Updated: 2024/03/08 12:53:38 by mualkhid         ###   ########.fr       */
+/*   Updated: 2024/03/23 14:16:44 by mualkhid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,7 +113,6 @@ void				handle_swap_commands(char *line, t_stack **a, t_stack **b);
 void				handle_push_commands(char *line, t_stack **a, t_stack **b);
 void				handle_rotate_commands(char *line, t_stack **a,
 						t_stack **b);
-
 void				process_input(int ac, char **av, t_stack **a);
 void				process_commands(t_stack **a, t_stack **b);
 void				print_result(t_stack *a);
