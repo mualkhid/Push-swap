@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "push_swap.h"
 
 void	checker_error(t_stack **a, t_stack **b)
@@ -59,29 +58,3 @@ void	apply_command(t_stack **a, t_stack **b, char *command)
 		checker_error(a, b);
 }
 
-int init_stack_checker(t_stack **a, char *arg)
-{
-    long n;
-
-    if (error_syntax(arg))
-	{
-		free(arg);
-        free_errors(a, NULL);
-        return (ERROR);
-    }
-    n = ft_atol(arg);
-    if (n > INT_MAX || n < INT_MIN)
-	{
-		free(arg);
-		free_errors(a, NULL);
-        return (ERROR);
-    }
-    if (error_duplicate(*a, (int)n))
-	{
-		free(arg);
-        free_errors(a, NULL);
-        return (ERROR);
-    }
-    append_node(a, (int)n);
-    return (0);
-}

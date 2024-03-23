@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "push_swap.h"
 
 static void	set_target_b(t_stack *a, t_stack *b)
