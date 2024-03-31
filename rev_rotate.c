@@ -1,48 +1,49 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rotate_commands.c                                  :+:      :+:    :+:   */
+/*   rev_rotate_commands.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mualkhid <mualkhid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/04 11:09:20 by mualkhid          #+#    #+#             */
-/*   Updated: 2024/03/08 11:58:17 by mualkhid         ###   ########.fr       */
+/*   Created: 2024/03/04 11:09:14 by mualkhid          #+#    #+#             */
+/*   Updated: 2024/03/08 11:58:01 by mualkhid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	rotate(t_stack **stack)
+void	rev_rotate(t_stack **stack)
 {
-	t_stack	*last_node;
+	t_stack	*last;
 
 	if (!*stack || !(*stack)->next)
 		return ;
-	last_node = find_last(*stack);
-	last_node->next = *stack;
-	*stack = (*stack)->next;
-	last_node->next->prev = last_node;
-	last_node->next->next = NULL;
+	last = get_last(*stack);
+	last->prev->next = NULL;
+	last->next = *stack;
+	last->prev = NULL;
+	*stack = last;
+	last->next->prev = last;
 }
 
-void	ra(t_stack **a, bool print)
+void	rra(t_stack **a, bool print)
 {
-	rotate(a);
+	rev_rotate(a);
 	if (!print)
-		ft_printf("ra\n");
+		ft_printf("rra\n");
 }
 
-void	rb(t_stack **b, bool print)
+void	rrb(t_stack **b, bool print)
 {
-	rotate(b);
+	rev_rotate(b);
 	if (!print)
-		ft_printf("rb\n");
+		ft_printf("rrb\n");
 }
 
-void	rr(t_stack **a, t_stack **b, bool print)
+void	rrr(t_stack **a, t_stack **b, bool print)
 {
-	rotate(a);
-	rotate(b);
+	rev_rotate(a);
+	rev_rotate(b);
 	if (!print)
-		ft_printf("rr\n");
+		ft_printf("rrr\n");
 }

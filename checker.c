@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-void	process_input(int ac, char **av, t_stack **a)
+void	process_args(int ac, char **av, t_stack **a)
 {
 	char	**split_av;
 	int		i;
@@ -21,12 +21,12 @@ void	process_input(int ac, char **av, t_stack **a)
 	while (i < ac)
 	{
 		split_av = split(av[i], ' ');
-		if (init_stack_a(a, split_av) == -1)
+		if (initiate_stack_a(a, split_av) == -1)
 		{
-			free_split_array(split_av);
+			free_array(split_av);
 			continue ;
 		}
-		free_split_array(split_av);
+		free_array(split_av);
 		i++;
 	}
 }
@@ -50,8 +50,8 @@ void	print_result(t_stack *a)
 {
 	int	len;
 
-	len = stack_len(a);
-	if (stack_sorted(a) && stack_len(a) == len)
+	len = get_len(a);
+	if (stack_sorted(a) && get_len(a) == len)
 		write(1, "OK\n", 3);
 	else
 		write(1, "KO\n", 3);
@@ -66,7 +66,7 @@ int	main(int ac, char **av)
 	b = NULL;
 	if (ac == 1 || (ac == 2 && !av[1][0]))
 		return (0);
-	process_input(ac, av, &a);
+	process_args(ac, av, &a);
 	process_commands(&a, &b);
 	print_result(a);
 	free_stack(&a);

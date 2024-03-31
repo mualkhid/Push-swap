@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_b_to_a.c                                      :+:      :+:    :+:   */
+/*   move_b_to_a.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mualkhid <mualkhid@student.42.fr>          +#+  +:+       +#+        */
+/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 11:08:26 by mualkhid          #+#    #+#             */
-/*   Updated: 2024/03/08 11:56:10 by mualkhid         ###   ########.fr       */
+/*   Updated: 2024/03/29 12:07:36 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	set_target_b(t_stack *a, t_stack *b)
+static void	assign_target_b(t_stack *a, t_stack *b)
 {
 	t_stack	*current_a;
 	t_stack	*target_node;
@@ -32,16 +32,17 @@ static void	set_target_b(t_stack *a, t_stack *b)
 			current_a = current_a->next;
 		}
 		if (best_match_index == LONG_MAX)
-			b->target_node = find_min(a);
+			b->target_node = get_min(a);
 		else
 			b->target_node = target_node;
 		b = b->next;
 	}
 }
 
-void	init_nodes_b(t_stack *a, t_stack *b)
+void	initiate_nodes_b(t_stack *a, t_stack *b)
 {
-	current_index(a);
-	current_index(b);
-	set_target_b(a, b);
+	index_median(a);
+	index_median(b);
+	assign_target_b(a, b);
 }
+

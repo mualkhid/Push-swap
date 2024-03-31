@@ -24,7 +24,7 @@ char	*read_from_fd(int fd, char *accumulated_str)
 		return (NULL);
 	}
 	read_length = 1;
-	while (!find_character(accumulated_str, '\n') && read_length != 0)
+	while (!get_character(accumulated_str, '\n') && read_length != 0)
 	{
 		read_length = read(fd, buffer, BUFFER_SIZE);
 		if (read_length == -1)

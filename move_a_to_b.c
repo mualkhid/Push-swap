@@ -12,28 +12,7 @@
 
 #include "push_swap.h"
 
-void	current_index(t_stack *stack)
-{
-	int	i;
-	int	median;
-
-	i = 0;
-	if (!stack)
-		return ;
-	median = stack_len(stack) / 2;
-	while (stack)
-	{
-		stack->index = i;
-		if (i <= median)
-			stack->above_median = true;
-		else
-			stack->above_median = false;
-		stack = stack->next;
-		++i;
-	}
-}
-
-static void	set_target_a(t_stack *a, t_stack *b)
+static void	assign_target_a(t_stack *a, t_stack *b)
 {
 	t_stack	*current_b;
 	t_stack	*target_node;
@@ -53,20 +32,20 @@ static void	set_target_a(t_stack *a, t_stack *b)
 			current_b = current_b->next;
 		}
 		if (best_match_index == LONG_MIN)
-			a->target_node = find_max(b);
+			a->target_node = get_max(b);
 		else
 			a->target_node = target_node;
 		a = a->next;
 	}
 }
 
-static void	cost_analysis_a(t_stack *a, t_stack *b)
+static void	push_cost_analysis_a(t_stack *a, t_stack *b)
 {
 	int	len_a;
 	int	len_b;
 
-	len_a = stack_len(a);
-	len_b = stack_len(b);
+	len_a = get_len(a);
+	len_b = get_len(b);
 	while (a)
 	{
 		a->push_cost = a->index;
@@ -100,11 +79,11 @@ void	set_cheapest(t_stack *stack)
 	cheapest_node->cheapest = true;
 }
 
-void	init_nodes_a(t_stack *a, t_stack *b)
+void	initiate_nodes_a(t_stack *a, t_stack *b)
 {
-	current_index(a);
-	current_index(b);
-	set_target_a(a, b);
-	cost_analysis_a(a, b);
+	index_median(a);
+	index_median(b);
+	assign_target_a(a, b);
+	push_cost_analysis_a(a, b);
 	set_cheapest(a);
 }

@@ -22,7 +22,7 @@ int	lenstr(const char *str)
 	return (len);
 }
 
-char	*find_character(const char *str, int character)
+char	*get_character(const char *str, int character)
 {
 	int	i;
 

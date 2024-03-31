@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-int	error_syntax(char *str_n)
+int	syntax_error(char *str_n)
 {
 	if (!(*str_n == '+' || *str_n == '-' || (*str_n >= '0' && *str_n <= '9')))
 		return (1);
@@ -27,7 +27,7 @@ int	error_syntax(char *str_n)
 	return (0);
 }
 
-int	error_duplicate(t_stack *a, int n)
+int	duplicate_error(t_stack *a, int n)
 {
 	if (!a)
 	{
@@ -58,12 +58,10 @@ void	free_stack(t_stack **stack)
 	}
 }
 
-void	free_errors(t_stack **a, t_stack **b)
+void	free_errors(t_stack **a)
 {
-	ft_putendl_fd("Error", 2);
+	ft_printf("Error\n");
 	if (a && *a)
 		free_stack(a);
-	if (b && *b)
-		free_stack(b);
 	exit(EXIT_FAILURE);
 }

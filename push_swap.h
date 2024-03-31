@@ -29,7 +29,7 @@
 # endif
 
 int					lenstr(const char *str);
-char				*find_character(const char *str, int character);
+char				*get_character(const char *str, int character);
 char				*initialize_string(void);
 char				*join_strings(char *frst, char *secnd);
 char				*read_from_fd(int fd, char *accumulated_str);
@@ -49,33 +49,32 @@ typedef struct s_stack
 	struct s_stack	*prev;
 }					t_stack;
 
-//***Handle errors
-int					error_syntax(char *str_n);
-int					error_duplicate(t_stack *a, int n);
+//***Parsing
+int					syntax_error(char *str_n);
+int					duplicate_error(t_stack *a, int n);
 void				free_stack(t_stack **stack);
-void				free_errors(t_stack **a, t_stack **b);
-void				ft_putendl_fd(char *s, int fd);
+void				free_errors(t_stack **a);
 
 //***Stack initiation
-int					init_stack_a(t_stack **a, char **split_av);
+int					initiate_stack_a(t_stack **a, char **split_av);
 char				**split(char *s, char c);
-void				free_split_array(char **split_array);
+void				free_array(char **split_array);
 int					ft_isdigit(int c);
 
 //***Nodes initiation
-void				init_nodes_a(t_stack *a, t_stack *b);
-void				init_nodes_b(t_stack *a, t_stack *b);
-void				current_index(t_stack *stack);
+void				initiate_nodes_a(t_stack *a, t_stack *b);
+void				initiate_nodes_b(t_stack *a, t_stack *b);
+void				index_median(t_stack *stack);
 void				set_cheapest(t_stack *stack);
 t_stack				*get_cheapest(t_stack *stack);
-void				prep_for_push(t_stack **s, t_stack *n, char c);
+void				push_init(t_stack **s, t_stack *n, char c);
 
 //***Stack utils
-int					stack_len(t_stack *stack);
-t_stack				*find_last(t_stack *stack);
+int					get_len(t_stack *stack);
+t_stack				*get_last(t_stack *stack);
 bool				stack_sorted(t_stack *stack);
-t_stack				*find_min(t_stack *stack);
-t_stack				*find_max(t_stack *stack);
+t_stack				*get_min(t_stack *stack);
+t_stack				*get_max(t_stack *stack);
 
 //***Commands
 void				sa(t_stack **a, bool print);
@@ -95,12 +94,11 @@ void				rev_rotate_both(t_stack **a, t_stack **b,
 void				rotate_both(t_stack **a, t_stack **b, t_stack *cheapest);
 
 //***Algorithm
-void				sort_three(t_stack **a);
-void				sort_stacks(t_stack **a, t_stack **b);
+void				sort_3(t_stack **a);
+void				stack_sorter(t_stack **a, t_stack **b);
 void				move_b_to_a(t_stack **a, t_stack **b);
-void				min_on_top(t_stack **a);
+void				set_min_on_top(t_stack **a);
 void				move_a_to_b(t_stack **a, t_stack **b);
-void				sort_stacks(t_stack **a, t_stack **b);
 void				put_str(char *str, int *len);
 void				put_digit(long long int num, int base, int *len);
 int					ft_printf(const char *format, ...);
@@ -113,7 +111,7 @@ void				handle_swap_commands(char *line, t_stack **a, t_stack **b);
 void				handle_push_commands(char *line, t_stack **a, t_stack **b);
 void				handle_rotate_commands(char *line, t_stack **a,
 						t_stack **b);
-void				process_input(int ac, char **av, t_stack **a);
+void				process_args(int ac, char **av, t_stack **a);
 void				process_commands(t_stack **a, t_stack **b);
 void				print_result(t_stack *a);
 
