@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack_init.c                                       :+:      :+:    :+:   */
+/*   initiation.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mualkhid <mualkhid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 11:09:42 by mualkhid          #+#    #+#             */
-/*   Updated: 2024/03/23 14:41:16 by mualkhid         ###   ########.fr       */
+/*   Updated: 2024/03/31 12:21:06 by mualkhid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,6 @@ static void	adjoin_node(t_stack **stack, int n)
 		node->prev = last_node;
 	}
 }
-
 
 int	initiate_stack_a(t_stack **a, char **split_av)
 {

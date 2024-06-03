@@ -6,7 +6,7 @@
 #    By: mualkhid <mualkhid@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/04 11:08:32 by mualkhid          #+#    #+#              #
-#    Updated: 2024/03/08 11:56:21 by mualkhid         ###   ########.fr        #
+#    Updated: 2024/04/01 16:17:05 by mualkhid         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -78,8 +78,6 @@ bonus: $(NAME_BONUS)
 
 $(NAME_BONUS): $(OBJSB) $(LIBFT) $(PRINTF)
 	$(CC) $(CFLAGS) -o $(NAME_BONUS) $(OBJSB) $(LIBFT) $(PRINTF)
-
-
 
 clean:
 	make clean -C libft

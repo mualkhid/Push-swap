@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   move_b_to_a.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*   By: mualkhid <mualkhid@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 11:08:26 by mualkhid          #+#    #+#             */
-/*   Updated: 2024/03/29 12:07:36 by codespace        ###   ########.fr       */
+/*   Updated: 2024/03/31 12:21:47 by mualkhid         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,4 +45,3 @@ void	initiate_nodes_b(t_stack *a, t_stack *b)
 	index_median(b);
 	assign_target_b(a, b);
 }
-
